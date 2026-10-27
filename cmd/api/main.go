@@ -1,11 +1,15 @@
 package main
 
-import "log"
+import (
+	"log"
+
+	"github.com/radityarps/gophersocial/internal/env"
+)
 
 func main() {
 	app := &application{
 		config: config{
-			addr: ":8080",
+			addr: env.GetString("ADDR", ":8080"),
 		},
 	}
 	mux := app.mount()
